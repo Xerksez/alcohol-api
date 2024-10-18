@@ -1,25 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const dataFilePath = path.join(__dirname, '../data/alcoholData.json');
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
 const loadData = () => {
-  const data = fs.readFileSync(dataFilePath);
+  const data = readFileSync(dataFilePath);
   return JSON.parse(data).rum;
 };
 
 const saveData = (data) => {
-  const fileData = fs.readFileSync(dataFilePath);
+  const fileData = readFileSync(dataFilePath);
   const json = JSON.parse(fileData);
   json.rum = data;
-  fs.writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+  writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
 };
 
-exports.getAllRum = (req, res) => {
+const getAllRum = (req, res) => {
   const rum = loadData();
   res.json(rum);
 };
 
-exports.createRum = (req, res) => {
+const createRum = (req, res) => {
   const rum = loadData();
   const newRum = req.body;
 
@@ -32,19 +32,31 @@ exports.createRum = (req, res) => {
     return res.status(409).json({ error: "Rum już istnieje" });
   }
 
+  newRum.id = rum.length > 0 ? rum[rum.length - 1].id + 1 : 1;
   rum.push(newRum);
   saveData(rum);
-  res.status(201).json(newRum);
+
+  res.status(201).location(`/api/rum/${newRum.id}`).json(newRum);
 };
 
-exports.getRumById = (req, res) => {
+const getRumById = (req, res) => {
   const rum = loadData();
   const singleRum = rum.find(r => r.id === parseInt(req.params.id));
   if (!singleRum) return res.status(404).send('Rum nie znaleziony');
-  res.json(singleRum);
+
+  const response = {
+    ...singleRum,
+    _links: {
+      self: { href: `/api/rum/${singleRum.id}` },
+      update: { href: `/api/rum/${singleRum.id}` },
+      delete: { href: `/api/rum/${singleRum.id}` }
+    }
+  };
+
+  res.json(response);
 };
 
-exports.updateRum = (req, res) => {
+const updateRum = (req, res) => {
   const rum = loadData();
   const index = rum.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
@@ -55,7 +67,7 @@ exports.updateRum = (req, res) => {
   res.json(updatedRum);
 };
 
-exports.partialUpdateRum = (req, res) => {
+const partialUpdateRum = (req, res) => {
   const rum = loadData();
   const index = rum.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
@@ -66,7 +78,7 @@ exports.partialUpdateRum = (req, res) => {
   res.json(updatedRum);
 };
 
-exports.deleteRum = (req, res) => {
+const deleteRum = (req, res) => {
   const rum = loadData();
   const index = rum.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
@@ -74,4 +86,13 @@ exports.deleteRum = (req, res) => {
   rum.splice(index, 1);
   saveData(rum);
   res.status(204).send();
+};
+
+export default {
+  getAllRum,
+  createRum,
+  getRumById,
+  updateRum,
+  partialUpdateRum,
+  deleteRum
 };

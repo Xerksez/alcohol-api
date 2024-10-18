@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const winesController = require('../controllers/winesController');
+const winesController = require('../controllers/winesController').default;
 
 router.get('/', winesController.getAllWines); 
 router.post('/', winesController.createWine); 

@@ -1,25 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const dataFilePath = path.join(__dirname, '../data/alcoholData.json');
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
 const loadData = () => {
-  const data = fs.readFileSync(dataFilePath);
+  const data = readFileSync(dataFilePath);
   return JSON.parse(data).wines;
 };
 
 const saveData = (data) => {
-  const fileData = fs.readFileSync(dataFilePath);
+  const fileData = readFileSync(dataFilePath);
   const json = JSON.parse(fileData);
   json.wines = data;
-  fs.writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+  writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
 };
 
-exports.getAllWines = (req, res) => {
+const getAllWines = (req, res) => {
   const wines = loadData();
   res.json(wines);
 };
 
-exports.createWine = (req, res) => {
+const createWine = (req, res) => {
   const wines = loadData();
   const newWine = req.body;
 
@@ -32,22 +32,34 @@ exports.createWine = (req, res) => {
     return res.status(409).json({ error: "Wino już istnieje" });
   }
 
+  newWine.id = wines.length > 0 ? wines[wines.length - 1].id + 1 : 1;
   wines.push(newWine);
   saveData(wines);
-  res.status(201).json(newWine);
+
+  res.status(201).location(`/api/wines/${newWine.id}`).json(newWine);
 };
 
-exports.getWineById = (req, res) => {
+const getWineById = (req, res) => {
   const wines = loadData();
   const wine = wines.find(w => w.id === parseInt(req.params.id));
   if (!wine) return res.status(404).send('Wino nie znalezione');
-  res.json(wine);
+
+  const response = {
+    ...wine,
+    _links: {
+      self: { href: `/api/wines/${wine.id}` },
+      update: { href: `/api/wines/${wine.id}` },
+      delete: { href: `/api/wines/${wine.id}` }
+    }
+  };
+
+  res.json(response);
 };
 
-exports.updateWine = (req, res) => {
+const updateWine = (req, res) => {
   const wines = loadData();
   const index = wines.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Wino nie znalezione');
+  if (index === -1) return res.status(404).send('Wino nie znaleziona');
 
   const updatedWine = { ...wines[index], ...req.body };
   wines[index] = updatedWine;
@@ -55,10 +67,10 @@ exports.updateWine = (req, res) => {
   res.json(updatedWine);
 };
 
-exports.partialUpdateWine = (req, res) => {
+const partialUpdateWine = (req, res) => {
   const wines = loadData();
   const index = wines.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Wino nie znalezione');
+  if (index === -1) return res.status(404).send('Wino nie znaleziona');
 
   const updatedWine = { ...wines[index], ...req.body };
   wines[index] = updatedWine;
@@ -66,12 +78,21 @@ exports.partialUpdateWine = (req, res) => {
   res.json(updatedWine);
 };
 
-exports.deleteWine = (req, res) => {
+const deleteWine = (req, res) => {
   const wines = loadData();
   const index = wines.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Wino nie znalezione');
+  if (index === -1) return res.status(404).send('Wino nie znaleziona');
 
   wines.splice(index, 1);
   saveData(wines);
   res.status(204).send();
+};
+
+export default {
+  getAllWines,
+  createWine,
+  getWineById,
+  updateWine,
+  partialUpdateWine,
+  deleteWine
 };

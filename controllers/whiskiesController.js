@@ -1,25 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const dataFilePath = path.join(__dirname, '../data/alcoholData.json');
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
 const loadData = () => {
-  const data = fs.readFileSync(dataFilePath);
+  const data = readFileSync(dataFilePath);
   return JSON.parse(data).whiskies;
 };
 
 const saveData = (data) => {
-  const fileData = fs.readFileSync(dataFilePath);
+  const fileData = readFileSync(dataFilePath);
   const json = JSON.parse(fileData);
   json.whiskies = data;
-  fs.writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+  writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
 };
 
-exports.getAllWhiskies = (req, res) => {
+const getAllWhiskies = (req, res) => {
   const whiskies = loadData();
   res.json(whiskies);
 };
 
-exports.createWhisky = (req, res) => {
+const createWhisky = (req, res) => {
   const whiskies = loadData();
   const newWhisky = req.body;
 
@@ -32,19 +32,31 @@ exports.createWhisky = (req, res) => {
     return res.status(409).json({ error: "Whisky już istnieje" });
   }
 
+  newWhisky.id = whiskies.length > 0 ? whiskies[whiskies.length - 1].id + 1 : 1;
   whiskies.push(newWhisky);
   saveData(whiskies);
-  res.status(201).json(newWhisky);
+
+  res.status(201).location(`/api/whiskies/${newWhisky.id}`).json(newWhisky);
 };
 
-exports.getWhiskyById = (req, res) => {
+const getWhiskyById = (req, res) => {
   const whiskies = loadData();
   const whisky = whiskies.find(w => w.id === parseInt(req.params.id));
   if (!whisky) return res.status(404).send('Whisky nie znaleziona');
-  res.json(whisky);
+
+  const response = {
+    ...whisky,
+    _links: {
+      self: { href: `/api/whiskies/${whisky.id}` },
+      update: { href: `/api/whiskies/${whisky.id}` },
+      delete: { href: `/api/whiskies/${whisky.id}` }
+    }
+  };
+
+  res.json(response);
 };
 
-exports.updateWhisky = (req, res) => {
+const updateWhisky = (req, res) => {
   const whiskies = loadData();
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Whisky nie znaleziona');
@@ -55,7 +67,7 @@ exports.updateWhisky = (req, res) => {
   res.json(updatedWhisky);
 };
 
-exports.partialUpdateWhisky = (req, res) => {
+const partialUpdateWhisky = (req, res) => {
   const whiskies = loadData();
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Whisky nie znaleziona');
@@ -66,7 +78,7 @@ exports.partialUpdateWhisky = (req, res) => {
   res.json(updatedWhisky);
 };
 
-exports.deleteWhisky = (req, res) => {
+const deleteWhisky = (req, res) => {
   const whiskies = loadData();
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Whisky nie znaleziona');
@@ -74,4 +86,13 @@ exports.deleteWhisky = (req, res) => {
   whiskies.splice(index, 1);
   saveData(whiskies);
   res.status(204).send();
+};
+
+export default {
+  getAllWhiskies,
+  createWhisky,
+  getWhiskyById,
+  updateWhisky,
+  partialUpdateWhisky,
+  deleteWhisky
 };

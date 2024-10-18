@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const whiskiesController = require('../controllers/whiskiesController');
+import { Router } from 'express';
+import whiskiesController from '../controllers/whiskiesController';
+const router = Router();
 
 router.get('/', whiskiesController.getAllWhiskies);
 router.post('/', whiskiesController.createWhisky); 
@@ -9,4 +9,4 @@ router.put('/:id', whiskiesController.updateWhisky);
 router.patch('/:id', whiskiesController.partialUpdateWhisky); 
 router.delete('/:id', whiskiesController.deleteWhisky);
 
-module.exports = router;
+export default router;

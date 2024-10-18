@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const rumController = require('../controllers/rumController.js');
+import { Router } from 'express';
+import rumController from '../controllers/rumController.js';
+const router = Router();
 
 router.get('/', rumController.getAllRum);  
 router.post('/', rumController.createRum); 
@@ -9,4 +9,4 @@ router.put('/:id', rumController.updateRum);
 router.patch('/:id', rumController.partialUpdateRum); 
 router.delete('/:id', rumController.deleteRum);  
 
-module.exports = router;
+export default router;
