@@ -1,5 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
 const loadData = () => {
@@ -43,13 +45,13 @@ const getVodkaById = (req, res) => {
   const vodkas = loadData();
   const vodka = vodkas.find(v => v.id === parseInt(req.params.id));
   if (!vodka) return res.status(404).send('Wódka nie znaleziona');
-
+//hateos
   const response = {
     ...vodka,
     _links: {
-      self: { href: `/api/vodkas/${vodka.id}` },
-      update: { href: `/api/vodkas/${vodka.id}` },
-      delete: { href: `/api/vodkas/${vodka.id}` }
+      self: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+      update: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+      delete: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` }
     }
   };
 

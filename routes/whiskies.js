@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import whiskiesController from '../controllers/whiskiesController';
+import whiskiesController from '../controllers/whiskiesController.js';
 const router = Router();
 
 router.get('/', whiskiesController.getAllWhiskies);

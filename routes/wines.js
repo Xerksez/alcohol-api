@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const winesController = require('../controllers/winesController').default;
+import { Router } from 'express';
+const router = Router();
+import winesController from '../controllers/winesController.js';
 
 router.get('/', winesController.getAllWines); 
 router.post('/', winesController.createWine); 
@@ -9,4 +9,4 @@ router.put('/:id', winesController.updateWine);
 router.patch('/:id', winesController.partialUpdateWine);
 router.delete('/:id', winesController.deleteWine);  
 
-module.exports = router;
+export default router;

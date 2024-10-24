@@ -1,5 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
 const loadData = () => {
@@ -43,13 +45,13 @@ const getRumById = (req, res) => {
   const rum = loadData();
   const singleRum = rum.find(r => r.id === parseInt(req.params.id));
   if (!singleRum) return res.status(404).send('Rum nie znaleziony');
-
+//hateos
   const response = {
     ...singleRum,
     _links: {
-      self: { href: `/api/rum/${singleRum.id}` },
-      update: { href: `/api/rum/${singleRum.id}` },
-      delete: { href: `/api/rum/${singleRum.id}` }
+      self: { href: `${req.protocol}://${req.get('host')}/api/rum/${singleRum.id}` },
+      update: { href: `${req.protocol}://${req.get('host')}/api/rum/${singleRum.id}` },
+      delete: { href: `${req.protocol}://${req.get('host')}/api/rum/${singleRum.id}` }
     }
   };
 
