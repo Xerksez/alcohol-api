@@ -51,7 +51,8 @@ const getWhiskyById = (req, res) => {
     _links: {
       self: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
       update: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` }
+      delete: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
+      allWhiskies:{href: `${req.protocol}://${req.get('host')}/api/whiskies`}
     }
   };
 

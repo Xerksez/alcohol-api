@@ -51,7 +51,8 @@ const getVodkaById = (req, res) => {
     _links: {
       self: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
       update: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` }
+      delete: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+      allVodkas:{href: `${req.protocol}://${req.get('host')}/api/vodkas`}
     }
   };
 

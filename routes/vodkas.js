@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import vodkasController from '../controllers/vodkasController.js';
-
 const router = Router();
 
 router.get('/', vodkasController.getAllVodkas);

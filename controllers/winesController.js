@@ -51,7 +51,8 @@ const getWineById = (req, res) => {
     _links: {
       self: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
       update: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` }
+      delete: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
+      allWines:{href: `${req.protocol}://${req.get('host')}/api/wines`}
     }
   };
 
