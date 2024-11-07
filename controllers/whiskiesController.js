@@ -17,9 +17,18 @@ const saveData = (data) => {
 };
 
 const getAllWhiskies = (req, res) => {
-  const whiskies = loadData();
-  res.json(whiskies);
+  const whiskies = loadData().whiskies;
+
+  const response = whiskies.map(whisky => ({
+    ...whisky,
+    _links: {
+      self: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` }
+    }
+  }));
+
+  res.json(response);
 };
+
 
 const createWhisky = (req, res) => {
   const whiskies = loadData();
@@ -46,14 +55,24 @@ const getWhiskyById = (req, res) => {
   const whisky = whiskies.find(w => w.id === parseInt(req.params.id));
   if (!whisky) return res.status(404).send('Whisky nie znaleziona');
 //hateos
-  const response = {
-    ...whisky,
-    _links: {
-      self: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
-      update: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` }
+const response = {
+  ...whisky,  // dane zasobu
+  _links: {
+    self: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
+    allWhiskies: { href: `${req.protocol}://${req.get('host')}/api/whiskies` },
+    createWhisky: { href: `${req.protocol}://${req.get('host')}/api/whiskies` },
+    updateWhisky: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
+    partialUpdateWhisky: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
+    deleteWhisky: { href: `${req.protocol}://${req.get('host')}/api/whiskies/${whisky.id}` },
+    home: {
+      vodkas: { href: `${req.protocol}://${req.get('host')}/api/vodkas` },
+      whiskies: { href: `${req.protocol}://${req.get('host')}/api/whiskies` },
+      wines: { href: `${req.protocol}://${req.get('host')}/api/wines` },
+      rums: { href: `${req.protocol}://${req.get('host')}/api/rums` }
     }
-  };
+  }
+};
+
 
   res.json(response);
 };

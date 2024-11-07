@@ -18,7 +18,13 @@ const saveData = (data) => {
 
 const getAllVodkas = (req, res) => {
   const vodkas = loadData();
-  res.json(vodkas);
+  const response = vodkas.map(vodka => ({
+    ...vodka,
+    _links: {
+      self: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` }
+    }
+  }));
+  res.json(response);
 };
 
 const createVodka = (req, res) => {
@@ -46,14 +52,23 @@ const getVodkaById = (req, res) => {
   const vodka = vodkas.find(v => v.id === parseInt(req.params.id));
   if (!vodka) return res.status(404).send('Wódka nie znaleziona');
 //hateos
-  const response = {
-    ...vodka,
-    _links: {
-      self: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
-      update: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` }
+const response = {
+  ...vodka,  // dane zasobu
+  _links: {
+    self: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+    allVodkas: { href: `${req.protocol}://${req.get('host')}/api/vodkas` },
+    createVodka: { href: `${req.protocol}://${req.get('host')}/api/vodkas` },
+    updateVodka: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+    partialUpdateVodka: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+    deleteVodka: { href: `${req.protocol}://${req.get('host')}/api/vodkas/${vodka.id}` },
+    home: {
+      vodkas: { href: `${req.protocol}://${req.get('host')}/api/vodkas` },
+      whiskies: { href: `${req.protocol}://${req.get('host')}/api/whiskies` },
+      wines: { href: `${req.protocol}://${req.get('host')}/api/wines` },
+      rums: { href: `${req.protocol}://${req.get('host')}/api/rums` }
     }
-  };
+  }
+};
 
   res.json(response);
 };

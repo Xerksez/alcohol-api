@@ -17,9 +17,18 @@ const saveData = (data) => {
 };
 
 const getAllWines = (req, res) => {
-  const wines = loadData();
-  res.json(wines);
+  const wines = loadData().wines;
+
+  const response = wines.map(wine => ({
+    ...wine,
+    _links: {
+      self: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` }
+    }
+  }));
+
+  res.json(response);
 };
+
 
 const createWine = (req, res) => {
   const wines = loadData();
@@ -46,14 +55,24 @@ const getWineById = (req, res) => {
   const wine = wines.find(w => w.id === parseInt(req.params.id));
   if (!wine) return res.status(404).send('Wino nie znalezione');
 //hateos
-  const response = {
-    ...wine,
-    _links: {
-      self: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
-      update: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
-      delete: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` }
+const response = {
+  ...wine,  // dane zasobu
+  _links: {
+    self: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
+    allWines: { href: `${req.protocol}://${req.get('host')}/api/wines` },
+    createWine: { href: `${req.protocol}://${req.get('host')}/api/wines` },
+    updateWine: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
+    partialUpdateWine: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
+    deleteWine: { href: `${req.protocol}://${req.get('host')}/api/wines/${wine.id}` },
+    home: {
+      vodkas: { href: `${req.protocol}://${req.get('host')}/api/vodkas` },
+      whiskies: { href: `${req.protocol}://${req.get('host')}/api/whiskies` },
+      wines: { href: `${req.protocol}://${req.get('host')}/api/wines` },
+      rums: { href: `${req.protocol}://${req.get('host')}/api/rums` }
     }
-  };
+  }
+};
+
 
   res.json(response);
 };

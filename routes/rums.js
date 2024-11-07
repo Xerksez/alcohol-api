@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import rumController from '../controllers/rumController.js';
+import rumsController from '../controllers/rumsController.js';
 const router = Router();
 
-router.get('/', rumController.getAllRum);  
-router.post('/', rumController.createRum); 
-router.get('/:id', rumController.getRumById); 
-router.put('/:id', rumController.updateRum); 
-router.patch('/:id', rumController.partialUpdateRum); 
-router.delete('/:id', rumController.deleteRum);  
+router.get('/', rumsController.getAllRums);  
+router.post('/', rumsController.createRum); 
+router.get('/:id', rumsController.getRumById); 
+router.put('/:id', rumsController.updateRum); 
+router.patch('/:id', rumsController.partialUpdateRum); 
+router.delete('/:id', rumsController.deleteRum);  
 
 export default router;
