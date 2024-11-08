@@ -12,15 +12,8 @@ const corsOptions = {
   allowedHeaders: 'Content-Type, Cache-Control, Access-Control-Allow-Methods', 
 };
 
-const middlewareContentType = (req,res,next) => {
-  const ct = req.get('Content-Type');
-  if(ct !=='application/json'){
-    res.status(400);
-  }
-next();
-}
 
-app.use(cors(corsOptions),middlewareContentType,(req, res, next) => {
+app.use(cors(corsOptions),(req, res, next) => {
   res.set({
     'Content-Type': 'application/json', 
     'Cache-Control': 'public, max-age=300', 

@@ -5,26 +5,33 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
-// Funkcja do ładowania danych
 const loadData = () => {
   const data = readFileSync(dataFilePath);
-  return JSON.parse(data).rums;
+  return JSON.parse(data);
 };
 
-// Funkcja do zapisywania danych
 const saveData = (data) => {
-  const fileData = readFileSync(dataFilePath);
-  const json = JSON.parse(fileData);
-  json.rums = data;
-  writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+  writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
 
-// Pobierz wszystkie rumy
+const mapAwards = (awardIds, awardsList) => {
+  return awardIds.map(id => awardsList.find(award => award.id === id));
+};
+
 const getAllRums = (req, res) => {
-  const rums = loadData();
+  const data = loadData();
+  const rums = data.rums;
+  const awardsList = data.awards;
 
   const response = rums.map(rum => ({
     ...rum,
+    details: {
+      ...rum.details,
+      awards: {
+        international: mapAwards(rum.details.awards.international, awardsList),
+        domestic: mapAwards(rum.details.awards.domestic, awardsList)
+      }
+    },
     _links: {
       self: { href: `${req.protocol}://${req.get('host')}/api/rums/${rum.id}` }
     }
@@ -33,9 +40,9 @@ const getAllRums = (req, res) => {
   res.json(response);
 };
 
-// Stwórz nowy rum
 const createRum = (req, res) => {
-  const rums = loadData();
+  const data = loadData();
+  const rums = data.rums;
   const newRum = req.body;
 
   if (!newRum.name || !newRum.type) {
@@ -49,18 +56,22 @@ const createRum = (req, res) => {
 
   newRum.id = rums.length > 0 ? rums[rums.length - 1].id + 1 : 1;
   rums.push(newRum);
-  saveData(rums);
+  saveData({ ...data, rums });
 
   res.status(201).location(`/api/rums/${newRum.id}`).json(newRum);
 };
 
-// Pobierz pojedynczy rum po ID z HATEOAS
 const getRumById = (req, res) => {
-  const rums = loadData();
-  const rum = rums.find(r => r.id === parseInt(req.params.id));
+  const data = loadData();
+  const awardsList = data.awards;
+  const rum = data.rums.find(r => r.id === parseInt(req.params.id));
   if (!rum) return res.status(404).send('Rum nie znaleziony');
 
-  // HATEOAS
+  rum.details.awards = {
+    international: mapAwards(rum.details.awards.international, awardsList),
+    domestic: mapAwards(rum.details.awards.domestic, awardsList)
+  };
+
   const response = {
     ...rum,
     _links: {
@@ -82,42 +93,41 @@ const getRumById = (req, res) => {
   res.json(response);
 };
 
-// Aktualizuj cały rum
 const updateRum = (req, res) => {
-  const rums = loadData();
+  const data = loadData();
+  const rums = data.rums;
   const index = rums.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
 
   const updatedRum = { ...rums[index], ...req.body };
   rums[index] = updatedRum;
-  saveData(rums);
+  saveData({ ...data, rums });
   res.json(updatedRum);
 };
 
-// Aktualizacja częściowa rumu
 const partialUpdateRum = (req, res) => {
-  const rums = loadData();
+  const data = loadData();
+  const rums = data.rums;
   const index = rums.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
 
   const updatedRum = { ...rums[index], ...req.body };
   rums[index] = updatedRum;
-  saveData(rums);
+  saveData({ ...data, rums });
   res.json(updatedRum);
 };
 
-// Usuń rum
 const deleteRum = (req, res) => {
-  const rums = loadData();
+  const data = loadData();
+  const rums = data.rums;
   const index = rums.findIndex(r => r.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Rum nie znaleziony');
 
   rums.splice(index, 1);
-  saveData(rums);
+  saveData({ ...data, rums });
   res.status(204).send();
 };
 
-// Eksportuj wszystkie funkcje kontrolera
 export default {
   getAllRums,
   createRum,
