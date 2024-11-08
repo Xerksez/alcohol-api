@@ -15,7 +15,10 @@ const saveData = (data) => {
 };
 
 const mapAwards = (awardIds, awardsList) => {
-  return awardIds.map(id => awardsList.find(award => award.id === id));
+  return awardIds
+    .map(id => awardsList.find(award => award.id === id))
+    .filter(Boolean)
+    .map(award => award.name);
 };
 
 const getAllVodkas = (req, res) => {

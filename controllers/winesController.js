@@ -11,17 +11,17 @@ const loadData = () => {
   return JSON.parse(data);
 };
 
-// Funkcja do zapisywania danych
+// Funkcja do zapisywania danych bez ponownego wczytywania pliku
 const saveData = (data) => {
-  const fileData = readFileSync(dataFilePath);
-  const json = JSON.parse(fileData);
-  json.wines = data;
-  writeFileSync(dataFilePath, JSON.stringify(json, null, 2));
+  writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
 
-// Funkcja mapująca ID nagród na pełne obiekty nagród
+// Funkcja mapująca ID nagród na same nazwy nagród
 const mapAwards = (awardIds, awardsList) => {
-  return awardIds.map(id => awardsList.find(award => award.id === id));
+  return awardIds
+    .map(id => awardsList.find(award => award.id === id))
+    .filter(Boolean) // Usuwa wszelkie `undefined` w przypadku braku dopasowania
+    .map(award => award.name); // Zwraca tylko nazwy nagród
 };
 
 // Pobierz wszystkie wina z pełnymi nagrodami
@@ -29,7 +29,7 @@ const getAllWines = (req, res) => {
   const data = loadData();
   const wines = data.wines;
   const awardsList = data.awards;
-  console.log("Received data:", req.body);
+
   const response = wines.map(wine => ({
     ...wine,
     details: {

@@ -15,7 +15,10 @@ const saveData = (data) => {
 };
 
 const mapAwards = (awardIds, awardsList) => {
-  return awardIds.map(id => awardsList.find(award => award.id === id));
+  return awardIds
+    .map(id => awardsList.find(award => award.id === id))
+    .filter(Boolean)
+    .map(award => award.name);
 };
 
 const getAllWhiskies = (req, res) => {
@@ -65,7 +68,7 @@ const getWhiskyById = (req, res) => {
   const data = loadData();
   const awardsList = data.awards;
   const whisky = data.whiskies.find(w => w.id === parseInt(req.params.id));
-  if (!whisky) return res.status(404).send('Whisky nie znaleziony');
+  if (!whisky) return res.status(404).send('Whisky nie znaleziona');
 
   whisky.details.awards = {
     international: mapAwards(whisky.details.awards.international, awardsList),
@@ -97,7 +100,7 @@ const updateWhisky = (req, res) => {
   const data = loadData();
   const whiskies = data.whiskies;
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Whisky nie znaleziony');
+  if (index === -1) return res.status(404).send('Whisky nie znaleziona');
 
   const updatedWhisky = { ...whiskies[index], ...req.body };
   whiskies[index] = updatedWhisky;
@@ -109,7 +112,7 @@ const partialUpdateWhisky = (req, res) => {
   const data = loadData();
   const whiskies = data.whiskies;
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Whisky nie znaleziony');
+  if (index === -1) return res.status(404).send('Whisky nie znaleziona');
 
   const updatedWhisky = { ...whiskies[index], ...req.body };
   whiskies[index] = updatedWhisky;
@@ -121,7 +124,7 @@ const deleteWhisky = (req, res) => {
   const data = loadData();
   const whiskies = data.whiskies;
   const index = whiskies.findIndex(w => w.id === parseInt(req.params.id));
-  if (index === -1) return res.status(404).send('Whisky nie znaleziony');
+  if (index === -1) return res.status(404).send('Whisky nie znaleziona');
 
   whiskies.splice(index, 1);
   saveData({ ...data, whiskies });
