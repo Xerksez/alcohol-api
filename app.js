@@ -5,20 +5,20 @@ import vodkasRoutes from './routes/vodkas.js';
 import winesRoutes from './routes/wines.js';
 import whiskiesRoutes from './routes/whiskies.js';
 import rumRoutes from './routes/rums.js';
-// import {expressMiddleware} from "@apollo/server/express4"
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import { typeDefs } from './typeDefs.js';
+import { resolvers } from './resolvers.js';
 
-// app.use('/graphql', cors(), express.json(), expressMiddleware(apollServer))
 
-// const typeDefs = `#graphql
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-// `
+await apolloServer.start();
 
-// const resolvers= `
-
-// `
-// const apollServer = new ApolloServer(typeDefs,resolvers);
-// await apollServer.start();
-
+app.use('/graphql', cors(), express.json(), expressMiddleware(apolloServer));
 
 
 const corsOptions = {
