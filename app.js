@@ -5,20 +5,48 @@ import vodkasRoutes from './routes/vodkas.js';
 import winesRoutes from './routes/wines.js';
 import whiskiesRoutes from './routes/whiskies.js';
 import rumRoutes from './routes/rums.js';
+// import {expressMiddleware} from "@apollo/server/express4"
+
+// app.use('/graphql', cors(), express.json(), expressMiddleware(apollServer))
+
+// const typeDefs = `#graphql
+
+// `
+
+// const resolvers= `
+
+// `
+// const apollServer = new ApolloServer(typeDefs,resolvers);
+// await apollServer.start();
+
+
 
 const corsOptions = {
   origin: 'localhost',
-  methods: 'GET, POST, PUT, DELETE, PATCH', 
   allowedHeaders: 'Content-Type, Cache-Control, Access-Control-Allow-Methods', 
 };
 
+const dzialajaceMetody = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 
-app.use(cors(corsOptions),(req, res, next) => {
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  if (['POST', 'PUT', 'PATCH'].includes(req.method)) {
+    if (req.headers['content-type'] !== 'application/json') {
+      return res.status(415).json({ error: 'zły format' });
+    }
+  }
+
+  if (!dzialajaceMetody.includes(req.method)) {
+    return res.status(405).json({ error: `Metoda ${req.method} nie jest dozwolona, dozwolone są: ${dozwoloneMetody.join(', ')}` });
+  }
+
   res.set({
-    'Content-Type': 'application/json', 
-    'Cache-Control': 'public, max-age=300', 
+    'Content-Type': 'application/json',
+    'Cache-Control': 'public, max-age=300',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH'
   });
+  
   next();
 });
 
@@ -29,26 +57,6 @@ app.use('/api/rums', rumRoutes);
 
 // import test from './routes/testModule.js';
 // test();
-
-app.options('/api/vodkas', (req, res) => {
-  res.set('Allow', 'GET, POST, PUT, DELETE, PATCH,');
-  res.sendStatus(200);
-});
-
-app.options('/api/wines', (req, res) => {
-  res.set('Allow', 'GET, POST, PUT, DELETE, PATCH,');
-  res.sendStatus(200);
-});
-
-app.options('/api/whiskies', (req, res) => {
-  res.set('Allow', 'GET, POST, PUT, DELETE, PATCH,');
-  res.sendStatus(200);
-});
-
-app.options('/api/rums', (req, res) => {
-  res.set('Allow', 'GET, POST, PUT, DELETE, PATCH,');
-  res.sendStatus(200);
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

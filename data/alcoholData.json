@@ -1,49 +1,181 @@
 {
   "awards": [
-    { "id": 1, "name": "Gold Medal" },
-    { "id": 2, "name": "Vodka of the Year" },
-    { "id": 3, "name": "Best Polish Vodka" },
-    { "id": 4, "name": "Platinum Medal" },
-    { "id": 5, "name": "Best French Vodka" },
-    { "id": 6, "name": "Silver Medal" },
-    { "id": 7, "name": "Popular Russian Vodka" },
-    { "id": 8, "name": "Best Export Vodka" },
-    { "id": 9, "name": "Top Swedish Vodka" },
-    { "id": 10, "name": "Top Finnish Vodka" },
-    { "id": 11, "name": "Double Gold" },
-    { "id": 12, "name": "Top American Vodka" },
-    { "id": 13, "name": "Best Dutch Vodka" },
-    { "id": 14, "name": "Famous Russian Vodka" },
-    { "id": 15, "name": "Top Russian Vodka" },
-    { "id": 16, "name": "Wine of the Year" },
-    { "id": 17, "name": "Top French Wine" },
-    { "id": 18, "name": "Best Australian Wine" },
-    { "id": 19, "name": "Top Italian Wine" },
-    { "id": 20, "name": "Best American Wine" },
-    { "id": 21, "name": "Best Spanish Wine" },
-    { "id": 22, "name": "Top Bordeaux Wine" },
-    { "id": 23, "name": "Top French Sweet Wine" },
-    { "id": 24, "name": "Top Italian Red Wine" },
-    { "id": 25, "name": "Top Burgundy Wine" },
-    { "id": 26, "name": "Top Tuscan Wine" },
-    { "id": 27, "name": "Best Speyside Whisky" },
-    { "id": 28, "name": "Best Highland Whisky" },
-    { "id": 29, "name": "Best Japanese Whisky" },
-    { "id": 30, "name": "Top Blended Whisky" },
-    { "id": 31, "name": "Best Islay Whisky" },
-    { "id": 32, "name": "Best Cask Strength Whisky" },
-    { "id": 33, "name": "Top Japanese Whisky" },
-    { "id": 34, "name": "Best Irish Whisky" },
-    { "id": 35, "name": "Best Barbadian Rum" },
-    { "id": 36, "name": "Best Venezuelan Rum" },
-    { "id": 37, "name": "Best Guatemalan Rum" },
-    { "id": 38, "name": "Top Jamaican Rum" },
-    { "id": 39, "name": "Best Guyanese Rum" },
-    { "id": 40, "name": "Best British Navy Rum" },
-    { "id": 41, "name": "Best XO Rum" },
-    { "id": 42, "name": "Top Cuban Rum" },
-    { "id": 43, "name": "Best Saint Lucian Rum" },
-    { "id": 44, "name": "Best Nicaraguan Rum" }
+    {
+      "id": 1,
+      "name": "Gold Medal"
+    },
+    {
+      "id": 2,
+      "name": "Vodka of the Year"
+    },
+    {
+      "id": 3,
+      "name": "Best Polish Vodka"
+    },
+    {
+      "id": 4,
+      "name": "Platinum Medal"
+    },
+    {
+      "id": 5,
+      "name": "Best French Vodka"
+    },
+    {
+      "id": 6,
+      "name": "Silver Medal"
+    },
+    {
+      "id": 7,
+      "name": "Popular Russian Vodka"
+    },
+    {
+      "id": 8,
+      "name": "Best Export Vodka"
+    },
+    {
+      "id": 9,
+      "name": "Top Swedish Vodka"
+    },
+    {
+      "id": 10,
+      "name": "Top Finnish Vodka"
+    },
+    {
+      "id": 11,
+      "name": "Double Gold"
+    },
+    {
+      "id": 12,
+      "name": "Top American Vodka"
+    },
+    {
+      "id": 13,
+      "name": "Best Dutch Vodka"
+    },
+    {
+      "id": 14,
+      "name": "Famous Russian Vodka"
+    },
+    {
+      "id": 15,
+      "name": "Top Russian Vodka"
+    },
+    {
+      "id": 16,
+      "name": "Wine of the Year"
+    },
+    {
+      "id": 17,
+      "name": "Top French Wine"
+    },
+    {
+      "id": 18,
+      "name": "Best Australian Wine"
+    },
+    {
+      "id": 19,
+      "name": "Top Italian Wine"
+    },
+    {
+      "id": 20,
+      "name": "Best American Wine"
+    },
+    {
+      "id": 21,
+      "name": "Best Spanish Wine"
+    },
+    {
+      "id": 22,
+      "name": "Top Bordeaux Wine"
+    },
+    {
+      "id": 23,
+      "name": "Top French Sweet Wine"
+    },
+    {
+      "id": 24,
+      "name": "Top Italian Red Wine"
+    },
+    {
+      "id": 25,
+      "name": "Top Burgundy Wine"
+    },
+    {
+      "id": 26,
+      "name": "Top Tuscan Wine"
+    },
+    {
+      "id": 27,
+      "name": "Best Speyside Whisky"
+    },
+    {
+      "id": 28,
+      "name": "Best Highland Whisky"
+    },
+    {
+      "id": 29,
+      "name": "Best Japanese Whisky"
+    },
+    {
+      "id": 30,
+      "name": "Top Blended Whisky"
+    },
+    {
+      "id": 31,
+      "name": "Best Islay Whisky"
+    },
+    {
+      "id": 32,
+      "name": "Best Cask Strength Whisky"
+    },
+    {
+      "id": 33,
+      "name": "Top Japanese Whisky"
+    },
+    {
+      "id": 34,
+      "name": "Best Irish Whisky"
+    },
+    {
+      "id": 35,
+      "name": "Best Barbadian Rum"
+    },
+    {
+      "id": 36,
+      "name": "Best Venezuelan Rum"
+    },
+    {
+      "id": 37,
+      "name": "Best Guatemalan Rum"
+    },
+    {
+      "id": 38,
+      "name": "Top Jamaican Rum"
+    },
+    {
+      "id": 39,
+      "name": "Best Guyanese Rum"
+    },
+    {
+      "id": 40,
+      "name": "Best British Navy Rum"
+    },
+    {
+      "id": 41,
+      "name": "Best XO Rum"
+    },
+    {
+      "id": 42,
+      "name": "Top Cuban Rum"
+    },
+    {
+      "id": 43,
+      "name": "Best Saint Lucian Rum"
+    },
+    {
+      "id": 44,
+      "name": "Best Nicaraguan Rum"
+    }
   ],
   "vodkas": [
     {
@@ -56,8 +188,13 @@
         "distillery": "Belvedere Distillery",
         "year": 1993,
         "awards": {
-          "international": [1, 2],
-          "domestic": [3]
+          "international": [
+            1,
+            2
+          ],
+          "domestic": [
+            3
+          ]
         }
       }
     },
@@ -71,8 +208,12 @@
         "distillery": "Grey Goose Distillery",
         "year": 1997,
         "awards": {
-          "international": [4],
-          "domestic": [5]
+          "international": [
+            4
+          ],
+          "domestic": [
+            5
+          ]
         }
       }
     },
@@ -86,253 +227,321 @@
         "distillery": "Smirnoff Distillery",
         "year": 1864,
         "awards": {
-          "international": [6],
-          "domestic": [7]
-          }
-        }
-      },
-      {
-        "id": 5,
-        "name": "Finlandia",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "Finland",
-        "details": {
-          "distillery": "Altia",
-          "year": 1970,
-          "awards": {
-            "international": [1],
-            "domestic": [10]
-          }
-        }
-      },
-      {
-        "id": 6,
-        "name": "Cîroc",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "France",
-        "details": {
-          "distillery": "Cîroc Distillery",
-          "year": 2003,
-          "awards": {
-            "international": [11],
-            "domestic": [5]
-          }
-        }
-      },
-      {
-        "id": 7,
-        "name": "Skyy",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "USA",
-        "details": {
-          "distillery": "Skyy Spirits",
-          "year": 1992,
-          "awards": {
-            "international": [6],
-            "domestic": [12]
-          }
-        }
-      },
-      {
-        "id": 8,
-        "name": "Ketel One",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "Netherlands",
-        "details": {
-          "distillery": "Nolet Distillery",
-          "year": 1691,
-          "awards": {
-            "international": [1],
-            "domestic": [13]
-          }
-        }
-      },
-      {
-        "id": 9,
-        "name": "Stolichnaya",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "Russia",
-        "details": {
-          "distillery": "Stolichnaya Distillery",
-          "year": 1948,
-          "awards": {
-            "international": [1],
-            "domestic": [14]
-          }
-        }
-      },
-      {
-        "id": 10,
-        "name": "Russian Standard",
-        "type": "Vodka",
-        "abv": 40,
-        "country": "Russia",
-        "details": {
-          "distillery": "Russian Standard",
-          "year": 1998,
-          "awards": {
-            "international": [4],
-            "domestic": [15]
-          }
+          "international": [
+            6
+          ],
+          "domestic": [
+            7
+          ]
         }
       }
-    ],
-    "rums": [
-      {
-        "id": 1,
-        "name": "Mount Gay XO",
-        "type": "Rum",
-        "abv": 43,
-        "country": "Barbados",
-        "details": {
-          "distillery": "Mount Gay Distillery",
-          "year": 1703,
-          "awards": {
-            "international": ["Gold Medal"],
-            "domestic": ["Best Barbadian Rum"]
-          }
-        }
-      },
-      {
-        "id": 2,
-        "name": "Diplomatico Reserva Exclusiva",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Venezuela",
-        "details": {
-          "distillery": "Diplomatico Distillery",
-          "year": 1959,
-          "awards": {
-            "international": ["Double Gold"],
-            "domestic": ["Best Venezuelan Rum"]
-          }
-        }
-      },
-      {
-        "id": 3,
-        "name": "Ron Zacapa 23",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Guatemala",
-        "details": {
-          "distillery": "Zacapa Distillery",
-          "year": 1976,
-          "awards": {
-            "international": ["Platinum Medal"],
-            "domestic": ["Best Guatemalan Rum"]
-          }
-        }
-      },
-      {
-        "id": 4,
-        "name": "Appleton Estate 12",
-        "type": "Rum",
-        "abv": 43,
-        "country": "Jamaica",
-        "details": {
-          "distillery": "Appleton Estate",
-          "year": 1749,
-          "awards": {
-            "international": ["Gold Medal"],
-            "domestic": ["Top Jamaican Rum"]
-          }
-        }
-      },
-      {
-        "id": 5,
-        "name": "El Dorado 15",
-        "type": "Rum",
-        "abv": 43,
-        "country": "Guyana",
-        "details": {
-          "distillery": "El Dorado Distillery",
-          "year": 1670,
-          "awards": {
-            "international": ["Double Gold"],
-            "domestic": ["Best Guyanese Rum"]
-          }
-        }
-      },
-      {
-        "id": 6,
-        "name": "Pusser's Rum",
-        "type": "Rum",
-        "abv": 54.5,
-        "country": "United Kingdom",
-        "details": {
-          "distillery": "Pusser's Distillery",
-          "year": 1655,
-          "awards": {
-            "international": ["Platinum Medal"],
-            "domestic": ["Best British Navy Rum"]
-          }
-        }
-      },
-      {
-        "id": 7,
-        "name": "Plantation XO",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Barbados",
-        "details": {
-          "distillery": "Plantation Distillery",
-          "year": 1983,
-          "awards": {
-            "international": ["Gold Medal"],
-            "domestic": ["Best XO Rum"]
-          }
-        }
-      },
-      {
-        "id": 8,
-        "name": "Havana Club 7",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Cuba",
-        "details": {
-          "distillery": "Havana Club Distillery",
-          "year": 1934,
-          "awards": {
-            "international": ["Gold Medal"],
-            "domestic": ["Top Cuban Rum"]
-          }
-        }
-      },
-      {
-        "id": 9,
-        "name": "Chairman's Reserve",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Saint Lucia",
-        "details": {
-          "distillery": "St. Lucia Distillers",
-          "year": 1931,
-          "awards": {
-            "international": ["Silver Medal"],
-            "domestic": ["Best Saint Lucian Rum"]
-          }
-        }
-      },
-      {
-        "id": 10,
-        "name": "Flor de Caña 18",
-        "type": "Rum",
-        "abv": 40,
-        "country": "Nicaragua",
-        "details": {
-          "distillery": "Flor de Caña Distillery",
-          "year": 1890,
-          "awards": {
-            "international": ["Gold Medal"],
-            "domestic": ["Best Nicaraguan Rum"]
-          }
+    },
+    {
+      "id": 5,
+      "name": "Finlandia",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "Finland",
+      "details": {
+        "distillery": "Altia",
+        "year": 1970,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            10
+          ]
         }
       }
+    },
+    {
+      "id": 6,
+      "name": "Cîroc",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "France",
+      "details": {
+        "distillery": "Cîroc Distillery",
+        "year": 2003,
+        "awards": {
+          "international": [
+            11
+          ],
+          "domestic": [
+            5
+          ]
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Skyy",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "USA",
+      "details": {
+        "distillery": "Skyy Spirits",
+        "year": 1992,
+        "awards": {
+          "international": [
+            6
+          ],
+          "domestic": [
+            12
+          ]
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "Ketel One",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "Netherlands",
+      "details": {
+        "distillery": "Nolet Distillery",
+        "year": 1691,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            13
+          ]
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "Stolichnaya",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "Russia",
+      "details": {
+        "distillery": "Stolichnaya Distillery",
+        "year": 1948,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            14
+          ]
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "Russian Standard",
+      "type": "Vodka",
+      "abv": 40,
+      "country": "Russia",
+      "details": {
+        "distillery": "Russian Standard",
+        "year": 1998,
+        "awards": {
+          "international": [
+            4
+          ],
+          "domestic": [
+            15
+          ]
+        }
+      }
+    }
+  ],
+  "rums": [
+    {
+      "id": 1,
+      "name": "Mount Gay XO",
+      "type": "Rum",
+      "abv": 43,
+      "country": "Barbados",
+      "details": {
+        "distillery": "Mount Gay Distillery",
+        "year": 1703,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            35
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Diplomatico Reserva Exclusiva",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Venezuela",
+      "details": {
+        "distillery": "Diplomatico Distillery",
+        "year": 1959,
+        "awards": {
+          "international": [
+            11
+          ],
+          "domestic": [
+            36
+          ]
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Ron Zacapa 23",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Guatemala",
+      "details": {
+        "distillery": "Zacapa Distillery",
+        "year": 1976,
+        "awards": {
+          "international": [
+            4
+          ],
+          "domestic": [
+            37
+          ]
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Appleton Estate 12",
+      "type": "Rum",
+      "abv": 43,
+      "country": "Jamaica",
+      "details": {
+        "distillery": "Appleton Estate",
+        "year": 1749,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            38
+          ]
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "El Dorado 15",
+      "type": "Rum",
+      "abv": 43,
+      "country": "Guyana",
+      "details": {
+        "distillery": "El Dorado Distillery",
+        "year": 1670,
+        "awards": {
+          "international": [
+            11
+          ],
+          "domestic": [
+            39
+          ]
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Pusser's Rum",
+      "type": "Rum",
+      "abv": 54.5,
+      "country": "United Kingdom",
+      "details": {
+        "distillery": "Pusser's Distillery",
+        "year": 1655,
+        "awards": {
+          "international": [
+            4
+          ],
+          "domestic": [
+            40
+          ]
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Plantation XO",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Barbados",
+      "details": {
+        "distillery": "Plantation Distillery",
+        "year": 1983,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            41
+          ]
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "Havana Club 7",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Cuba",
+      "details": {
+        "distillery": "Havana Club Distillery",
+        "year": 1934,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            42
+          ]
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "Chairman's Reserve",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Saint Lucia",
+      "details": {
+        "distillery": "St. Lucia Distillers",
+        "year": 1931,
+        "awards": {
+          "international": [
+            6
+          ],
+          "domestic": [
+            43
+          ]
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "Flor de Caña 18",
+      "type": "Rum",
+      "abv": 40,
+      "country": "Nicaragua",
+      "details": {
+        "distillery": "Flor de Caña Distillery",
+        "year": 1890,
+        "awards": {
+          "international": [
+            1
+          ],
+          "domestic": [
+            44
+          ]
+        }
+      }
+    }
   ],
   "wines": [
     {
@@ -345,8 +554,12 @@
         "vineyard": "Château Margaux Estate",
         "year": 1787,
         "awards": {
-          "international": [16],
-          "domestic": [17]
+          "international": [
+            16
+          ],
+          "domestic": [
+            17
+          ]
         }
       }
     },
@@ -360,8 +573,12 @@
         "vineyard": "Penfolds Winery",
         "year": 1951,
         "awards": {
-          "international": [1],
-          "domestic": [18]
+          "international": [
+            1
+          ],
+          "domestic": [
+            18
+          ]
         }
       }
     },
@@ -375,8 +592,12 @@
         "vineyard": "Tenuta San Guido",
         "year": 1968,
         "awards": {
-          "international": [6],
-          "domestic": [19]
+          "international": [
+            6
+          ],
+          "domestic": [
+            19
+          ]
         }
       }
     },
@@ -384,14 +605,18 @@
       "id": 4,
       "name": "Opus One",
       "type": "Wine",
-      "abv": 14.0,
+      "abv": 14,
       "country": "USA",
       "details": {
         "vineyard": "Opus One Winery",
         "year": 1979,
         "awards": {
-          "international": [4],
-          "domestic": [20]
+          "international": [
+            4
+          ],
+          "domestic": [
+            20
+          ]
         }
       }
     },
@@ -399,14 +624,18 @@
       "id": 5,
       "name": "Vega Sicilia",
       "type": "Wine",
-      "abv": 14.0,
+      "abv": 14,
       "country": "Spain",
       "details": {
         "vineyard": "Vega Sicilia",
         "year": 1864,
         "awards": {
-          "international": [1],
-          "domestic": [21]
+          "international": [
+            1
+          ],
+          "domestic": [
+            21
+          ]
         }
       }
     },
@@ -420,8 +649,12 @@
         "vineyard": "Château Latour",
         "year": 1855,
         "awards": {
-          "international": [1],
-          "domestic": [22]
+          "international": [
+            1
+          ],
+          "domestic": [
+            22
+          ]
         }
       }
     },
@@ -435,8 +668,12 @@
         "vineyard": "Château d'Yquem",
         "year": 1593,
         "awards": {
-          "international": [16],
-          "domestic": [23]
+          "international": [
+            16
+          ],
+          "domestic": [
+            23
+          ]
         }
       }
     },
@@ -450,8 +687,12 @@
         "vineyard": "Antinori Winery",
         "year": 1971,
         "awards": {
-          "international": [6],
-          "domestic": [24]
+          "international": [
+            6
+          ],
+          "domestic": [
+            24
+          ]
         }
       }
     },
@@ -465,8 +706,12 @@
         "vineyard": "Domaine de la Romanée-Conti",
         "year": 1232,
         "awards": {
-          "international": [1],
-          "domestic": [25]
+          "international": [
+            1
+          ],
+          "domestic": [
+            25
+          ]
         }
       }
     },
@@ -474,14 +719,18 @@
       "id": 10,
       "name": "Solaia",
       "type": "Wine",
-      "abv": 14.0,
+      "abv": 14,
       "country": "Italy",
       "details": {
         "vineyard": "Antinori Winery",
         "year": 1978,
         "awards": {
-          "international": [1],
-          "domestic": [26]
+          "international": [
+            1
+          ],
+          "domestic": [
+            26
+          ]
         }
       }
     }
@@ -497,8 +746,12 @@
         "distillery": "Glenfiddich Distillery",
         "year": 1887,
         "awards": {
-          "international": [1],
-          "domestic": [27]
+          "international": [
+            1
+          ],
+          "domestic": [
+            27
+          ]
         }
       }
     },
@@ -512,8 +765,12 @@
         "distillery": "Macallan Distillery",
         "year": 1824,
         "awards": {
-          "international": [11],
-          "domestic": [28]
+          "international": [
+            11
+          ],
+          "domestic": [
+            28
+          ]
         }
       }
     },
@@ -527,8 +784,12 @@
         "distillery": "Suntory Yamazaki Distillery",
         "year": 1923,
         "awards": {
-          "international": [1],
-          "domestic": [29]
+          "international": [
+            1
+          ],
+          "domestic": [
+            29
+          ]
         }
       }
     },
@@ -542,8 +803,12 @@
         "distillery": "Johnnie Walker Distillery",
         "year": 1867,
         "awards": {
-          "international": [4],
-          "domestic": [30]
+          "international": [
+            4
+          ],
+          "domestic": [
+            30
+          ]
         }
       }
     },
@@ -557,8 +822,12 @@
         "distillery": "Chivas Brothers",
         "year": 1801,
         "awards": {
-          "international": [1],
-          "domestic": [30]
+          "international": [
+            1
+          ],
+          "domestic": [
+            30
+          ]
         }
       }
     },
@@ -572,8 +841,12 @@
         "distillery": "Lagavulin Distillery",
         "year": 1816,
         "awards": {
-          "international": [11],
-          "domestic": [31]
+          "international": [
+            11
+          ],
+          "domestic": [
+            31
+          ]
         }
       }
     },
@@ -587,8 +860,12 @@
         "distillery": "Laphroaig Distillery",
         "year": 1815,
         "awards": {
-          "international": [1],
-          "domestic": [31]
+          "international": [
+            1
+          ],
+          "domestic": [
+            31
+          ]
         }
       }
     },
@@ -602,8 +879,12 @@
         "distillery": "Ardbeg Distillery",
         "year": 1815,
         "awards": {
-          "international": [1],
-          "domestic": [32]
+          "international": [
+            1
+          ],
+          "domestic": [
+            32
+          ]
         }
       }
     },
@@ -617,8 +898,12 @@
         "distillery": "Suntory Hibiki Distillery",
         "year": 1989,
         "awards": {
-          "international": [1],
-          "domestic": [33]
+          "international": [
+            1
+          ],
+          "domestic": [
+            33
+          ]
         }
       }
     },
@@ -632,8 +917,12 @@
         "distillery": "Midleton Distillery",
         "year": 1857,
         "awards": {
-          "international": [1],
-          "domestic": [34]
+          "international": [
+            1
+          ],
+          "domestic": [
+            34
+          ]
         }
       }
     }
@@ -649,8 +938,12 @@
         "distillery": "Mount Gay Distillery",
         "year": 1703,
         "awards": {
-          "international": [1],
-          "domestic": [35]
+          "international": [
+            1
+          ],
+          "domestic": [
+            35
+          ]
         }
       }
     },
@@ -664,8 +957,12 @@
         "distillery": "Diplomatico Distillery",
         "year": 1959,
         "awards": {
-          "international": [11],
-          "domestic": [36]
+          "international": [
+            11
+          ],
+          "domestic": [
+            36
+          ]
         }
       }
     },
@@ -679,8 +976,12 @@
         "distillery": "Zacapa Distillery",
         "year": 1976,
         "awards": {
-          "international": [4],
-          "domestic": [37]
+          "international": [
+            4
+          ],
+          "domestic": [
+            37
+          ]
         }
       }
     },
@@ -694,8 +995,12 @@
         "distillery": "Appleton Estate",
         "year": 1749,
         "awards": {
-          "international": [1],
-          "domestic": [38]
+          "international": [
+            1
+          ],
+          "domestic": [
+            38
+          ]
         }
       }
     },
@@ -709,8 +1014,12 @@
         "distillery": "El Dorado Distillery",
         "year": 1670,
         "awards": {
-          "international": [11],
-          "domestic": [39]
+          "international": [
+            11
+          ],
+          "domestic": [
+            39
+          ]
         }
       }
     },
@@ -724,8 +1033,12 @@
         "distillery": "Pusser's Distillery",
         "year": 1655,
         "awards": {
-          "international": [4],
-          "domestic": [40]
+          "international": [
+            4
+          ],
+          "domestic": [
+            40
+          ]
         }
       }
     },
@@ -739,8 +1052,12 @@
         "distillery": "Plantation Distillery",
         "year": 1983,
         "awards": {
-          "international": [1],
-          "domestic": [41]
+          "international": [
+            1
+          ],
+          "domestic": [
+            41
+          ]
         }
       }
     },
@@ -754,8 +1071,12 @@
         "distillery": "Havana Club Distillery",
         "year": 1934,
         "awards": {
-          "international": [1],
-          "domestic": [42]
+          "international": [
+            1
+          ],
+          "domestic": [
+            42
+          ]
         }
       }
     },
@@ -769,8 +1090,12 @@
         "distillery": "St. Lucia Distillers",
         "year": 1931,
         "awards": {
-          "international": [6],
-          "domestic": [43]
+          "international": [
+            6
+          ],
+          "domestic": [
+            43
+          ]
         }
       }
     },
@@ -784,8 +1109,12 @@
         "distillery": "Flor de Caña Distillery",
         "year": 1890,
         "awards": {
-          "international": [1],
-          "domestic": [44]
+          "international": [
+            1
+          ],
+          "domestic": [
+            44
+          ]
         }
       }
     }
