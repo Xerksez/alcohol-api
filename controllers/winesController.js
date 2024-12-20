@@ -5,26 +5,25 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataFilePath = join(__dirname, '../data/alcoholData.json');
 
-// Funkcja do ładowania danych
 const loadData = () => {
   const data = readFileSync(dataFilePath);
   return JSON.parse(data);
 };
 
-// Funkcja do zapisywania danych bez ponownego wczytywania pliku
+
 const saveData = (data) => {
   writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
 
-// Funkcja mapująca ID nagród na same nazwy nagród
+
 const mapAwards = (awardIds, awardsList) => {
   return awardIds
     .map(id => awardsList.find(award => award.id === id))
-    .filter(Boolean) // Usuwa wszelkie `undefined` w przypadku braku dopasowania
-    .map(award => award.name); // Zwraca tylko nazwy nagród
+    .filter(Boolean) 
+    .map(award => award.name); 
 };
 
-// Pobierz wszystkie wina z pełnymi nagrodami
+
 const getAllWines = (req, res) => {
   const data = loadData();
   const wines = data.wines;
@@ -47,7 +46,7 @@ const getAllWines = (req, res) => {
   res.json(response);
 };
 
-// Stwórz nowe wino
+
 const createWine = (req, res) => {
   const data = loadData();
   const wines = data.wines;
@@ -69,14 +68,14 @@ const createWine = (req, res) => {
   res.status(201).location(`/api/wines/${newWine.id}`).json(newWine);
 };
 
-// Pobierz szczegóły wina z pełnymi nagrodami
+
 const getWineById = (req, res) => {
   const data = loadData();
   const awardsList = data.awards;
   const wine = data.wines.find(w => w.id === parseInt(req.params.id));
   if (!wine) return res.status(404).send('Wino nie znalezione');
 
-  // Mapowanie nagród
+
   wine.details.awards = {
     international: mapAwards(wine.details.awards.international, awardsList),
     domestic: mapAwards(wine.details.awards.domestic, awardsList)
@@ -103,7 +102,6 @@ const getWineById = (req, res) => {
   res.json(response);
 };
 
-// Aktualizuj wino
 const updateWine = (req, res) => {
   const data = loadData();
   const wines = data.wines;
@@ -116,7 +114,6 @@ const updateWine = (req, res) => {
   res.json(updatedWine);
 };
 
-// Częściowa aktualizacja wina
 const partialUpdateWine = (req, res) => {
   const data = loadData();
   const wines = data.wines;
@@ -129,7 +126,6 @@ const partialUpdateWine = (req, res) => {
   res.json(updatedWine);
 };
 
-// Usuń wino
 const deleteWine = (req, res) => {
   const data = loadData();
   const wines = data.wines;
@@ -141,7 +137,6 @@ const deleteWine = (req, res) => {
   res.status(204).send();
 };
 
-// Eksportuj kontrolery
 export default {
   getAllWines,
   createWine,

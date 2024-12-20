@@ -9,7 +9,13 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs } from './typeDefs.js';
 import { resolvers } from './resolvers.js';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './config/swagger.js';
 
+// Dodaj interfejs Swaggera
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+console.log('Swagger dostępny pod adresem: http://localhost:3000/swagger');
 
 const apolloServer = new ApolloServer({
   typeDefs,
@@ -19,7 +25,6 @@ const apolloServer = new ApolloServer({
 await apolloServer.start();
 
 app.use('/graphql', cors(), express.json(), expressMiddleware(apolloServer));
-
 
 const corsOptions = {
   origin: 'localhost',
@@ -69,3 +74,5 @@ app.listen(PORT, () => {
 // 400 Bad Request dla błędnych danych wejściowych.
 // 404 Not Found dla nieistniejących zasobów.
 // 409 Conflict w przypadku konfliktów (np. duplikat zasobu).
+//npx create-docusaurus@latest alcohol-api-docs classic --typescript
+//

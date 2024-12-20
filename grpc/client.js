@@ -9,3 +9,4 @@ const client = new proto.monopolowy.AlcoholService("127.0.0.1:9090",grpc.Channel
 client.GetAlcohol(null,(err,res)=>{
     console.log(res);
 });
+//"startGrpc":"cross-env GRPC_VERBOSITY=DEBUG GRPC_TRACE=all nodemon ./grpc/server.js"

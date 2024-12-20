@@ -1,4 +1,3 @@
-
 export const typeDefs = `#graphql
 
   type Vodka {
