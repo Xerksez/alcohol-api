@@ -4,6 +4,8 @@ slug: start
 ---
 # Dokumentacja API
 
+[Dokumentacja w Swaggerze](http://localhost:3000/swagger)
+
 # Wprowadzenie
 <img src="/img/brmn.jpg" alt="barman na sterydach" width="300"/>
 
