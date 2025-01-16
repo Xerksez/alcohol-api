@@ -42,7 +42,7 @@ const router = Router();
  *                               type: string
  *                               example: "Best Whisky of the Year"
  */
-router.get('/whiskies', whiskiesController.getAllWhiskies);
+router.get('/', whiskiesController.getAllWhiskies);
 
 /**
  * @swagger
@@ -72,7 +72,7 @@ router.get('/whiskies', whiskiesController.getAllWhiskies);
  *       409:
  *         description: Whisky już istnieje
  */
-router.post('/whiskies', whiskiesController.createWhisky);
+router.post('/', whiskiesController.createWhisky);
 
 /**
  * @swagger
@@ -94,7 +94,7 @@ router.post('/whiskies', whiskiesController.createWhisky);
  *       404:
  *         description: Whisky nie znaleziona
  */
-router.get('/whiskies/:id', whiskiesController.getWhiskyById);
+router.get('/:id', whiskiesController.getWhiskyById);
 
 /**
  * @swagger
@@ -129,7 +129,7 @@ router.get('/whiskies/:id', whiskiesController.getWhiskyById);
  *       404:
  *         description: Whisky nie znaleziona
  */
-router.put('/whiskies/:id', whiskiesController.updateWhisky);
+router.put('/:id', whiskiesController.updateWhisky);
 
 /**
  * @swagger
@@ -164,7 +164,7 @@ router.put('/whiskies/:id', whiskiesController.updateWhisky);
  *       404:
  *         description: Whisky nie znaleziona
  */
-router.patch('/whiskies/:id', whiskiesController.partialUpdateWhisky);
+router.patch('/:id', whiskiesController.partialUpdateWhisky);
 
 /**
  * @swagger
@@ -186,7 +186,7 @@ router.patch('/whiskies/:id', whiskiesController.partialUpdateWhisky);
  *       404:
  *         description: Whisky nie znaleziona
  */
-router.delete('/whiskies/:id', whiskiesController.deleteWhisky);
+router.delete('/:id', whiskiesController.deleteWhisky);
 
 export default router;
 

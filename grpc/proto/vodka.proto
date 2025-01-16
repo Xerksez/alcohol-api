@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package monopolowy;
+
+service VodkaService {
+    rpc ListVodkas(VodkaFilter) returns (VodkaListResponse);
+    rpc GetVodka(VodkaId) returns (VodkaResponse);
+    rpc CreateVodka(Vodka) returns (Vodka);
+    rpc UpdateVodka(Vodka) returns (Vodka);
+    rpc DeleteVodka(VodkaId) returns (Empty);
+}
+
+message Vodka {
+    int32 id = 1;
+    string name = 2;
+    string type = 3;
+    int32 abv = 4;
+    string country = 5;
+    VodkaDetails details = 6;
+}
+
+message VodkaDetails {
+    string distillery = 1;
+    int32 year = 2;
+}
+
+message VodkaFilter {
+    string name = 1;
+    int32 min_abv = 2;
+    int32 max_abv = 3;
+    string country = 4;
+}
+
+message VodkaListResponse {
+    repeated Vodka vodkas = 1;
+}
+
+message VodkaResponse {
+    Vodka vodka = 1;
+}
+
+message VodkaId {
+    int32 id = 1;
+}
+
+message Empty {}

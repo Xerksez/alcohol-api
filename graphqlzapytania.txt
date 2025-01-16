@@ -1,0 +1,85 @@
+//wypisanie wszystkich
+query GetVodkas {
+  vodkas {
+    id
+    name
+    type
+    abv
+    country
+    createdAt
+    details {
+      distillery
+      year
+      awards {
+        international
+        domestic
+      }
+    }
+  }
+}
+
+//wypisanie po id
+query GetVodkaById {
+  vodka(id: 1) {
+    id
+    name
+    abv
+    country
+    createdAt
+  }
+}
+
+//pofiltrowane
+query FilteredVodkas {
+  vodkas(filter: { abv: { lt: 40 }, country: { eq: "Russia" } }) {
+    id
+    name
+    abv
+    country
+  }
+}
+
+//stworzenie wódki
+mutation CreateVodka {
+  createVodka(
+    name: "New Vodka",
+    type: "Premium",
+    abv: 42.5,
+    country: "Poland",
+    details: {
+      distillery: "Luxury Distillery",
+      year: 2022,
+      awards: {
+        international: ["Best Vodka 2022"],
+        domestic: []
+      }
+    }
+  ) {
+    id
+    name
+    abv
+    country
+    createdAt
+  }
+}
+
+
+//update wódki 
+mutation UpdateVodka {
+  updateVodka(
+    id: 1,
+    name: "Updated Vodka",
+    abv: 45.0
+  ) {
+    id
+    name
+    abv
+    country
+    createdAt
+  }
+}
+
+//usuniecie wódki
+mutation DeleteVodka {
+  deleteVodka(id: 1)
+}

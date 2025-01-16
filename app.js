@@ -75,4 +75,3 @@ app.listen(PORT, () => {
 // 404 Not Found dla nieistniejących zasobów.
 // 409 Conflict w przypadku konfliktów (np. duplikat zasobu).
 //npx create-docusaurus@latest alcohol-api-docs classic --typescript
-//

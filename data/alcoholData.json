@@ -237,6 +237,25 @@
       }
     },
     {
+      "id": 4,
+      "name": "Smirnoff",
+      "type": "Vodka",
+      "abv": 37.5,
+      "country": "Russia",
+      "details": {
+        "distillery": "Smirnoff Distillery",
+        "year": 1864,
+        "awards": {
+          "international": [
+            6
+          ],
+          "domestic": [
+            7
+          ]
+        }
+      }
+    },
+    {
       "id": 5,
       "name": "Finlandia",
       "type": "Vodka",
