@@ -1,0 +1,966 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Alcohol API",
+    "version": "1.0.0",
+    "description": "API do zarządzania różnymi rodzajami alkoholi",
+    "contact": {
+      "name": "s24895",
+      "email": "s24895@pjwstk.edu.pl"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "REST API"
+    }
+  ],
+  "paths": {
+    "/api/rums": {
+      "get": {
+        "summary": "Pobiera listę wszystkich rumów",
+        "tags": [
+          "Rums"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista rumów",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Rum Bacardi"
+                      },
+                      "details": {
+                        "type": "object",
+                        "properties": {
+                          "awards": {
+                            "type": "object",
+                            "properties": {
+                              "international": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Gold Medal"
+                                }
+                              },
+                              "domestic": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Best Rum of the Year"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Tworzy nowy rum",
+        "tags": [
+          "Rums"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Rum"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Dark"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Rum został utworzony"
+          },
+          "400": {
+            "description": "Niepoprawne dane wejściowe"
+          },
+          "409": {
+            "description": "Rum już istnieje"
+          }
+        }
+      }
+    },
+    "/api/rums/{id}": {
+      "get": {
+        "summary": "Pobiera szczegóły rumu o podanym id",
+        "tags": [
+          "Rums"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Szczegóły rumu"
+          },
+          "404": {
+            "description": "Rum nie znaleziony"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aktualizuje dane rumu o podanym id",
+        "tags": [
+          "Rums"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Rum"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Spiced"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane rumu zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Rum nie znaleziony"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Częściowo aktualizuje dane rumu o podanym id",
+        "tags": [
+          "Rums"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Rum"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Spiced"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane rumu zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Rum nie znaleziony"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Usuwa rum o podanym id",
+        "tags": [
+          "Rums"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Rum został usunięty"
+          },
+          "404": {
+            "description": "Rum nie znaleziony"
+          }
+        }
+      }
+    },
+    "/api/vodkas": {
+      "get": {
+        "summary": "Pobiera listę wszystkich wódek",
+        "tags": [
+          "Vodkas"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista wódek",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Vodka"
+                      },
+                      "details": {
+                        "type": "object",
+                        "properties": {
+                          "awards": {
+                            "type": "object",
+                            "properties": {
+                              "international": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Gold Medal"
+                                }
+                              },
+                              "domestic": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Best Vodka of the Year"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Tworzy nową wódkę",
+        "tags": [
+          "Vodkas"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Vodka"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Premium"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Wódka została utworzona"
+          },
+          "400": {
+            "description": "Niepoprawne dane wejściowe"
+          },
+          "409": {
+            "description": "Wódka już istnieje"
+          }
+        }
+      }
+    },
+    "/api/vodkas/{id}": {
+      "get": {
+        "summary": "Pobiera szczegóły wódki o podanym id",
+        "tags": [
+          "Vodkas"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Szczegóły wódki"
+          },
+          "404": {
+            "description": "Wódka nie znaleziona"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aktualizuje dane wódki o podanym id",
+        "tags": [
+          "Vodkas"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Vodka"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Super Premium"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane wódki zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Wódka nie znaleziona"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Częściowo aktualizuje dane wódki o podanym id",
+        "tags": [
+          "Vodkas"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Vodka"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Ultra Premium"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane wódki zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Wódka nie znaleziona"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Usuwa wódkę o podanym id",
+        "tags": [
+          "Vodkas"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Wódka została usunięta"
+          },
+          "404": {
+            "description": "Wódka nie znaleziona"
+          }
+        }
+      }
+    },
+    "/api/whiskies": {
+      "get": {
+        "summary": "Pobiera listę wszystkich whisky",
+        "tags": [
+          "Whiskies"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista whisky",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Whisky"
+                      },
+                      "details": {
+                        "type": "object",
+                        "properties": {
+                          "awards": {
+                            "type": "object",
+                            "properties": {
+                              "international": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Gold Medal"
+                                }
+                              },
+                              "domestic": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Best Whisky of the Year"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Tworzy nową whisky",
+        "tags": [
+          "Whiskies"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Whisky"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Single Malt"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Whisky została utworzona"
+          },
+          "400": {
+            "description": "Niepoprawne dane wejściowe"
+          },
+          "409": {
+            "description": "Whisky już istnieje"
+          }
+        }
+      }
+    },
+    "/api/whiskies/{id}": {
+      "get": {
+        "summary": "Pobiera szczegóły whisky o podanym id",
+        "tags": [
+          "Whiskies"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Szczegóły whisky"
+          },
+          "404": {
+            "description": "Whisky nie znaleziona"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aktualizuje dane whisky o podanym id",
+        "tags": [
+          "Whiskies"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Whisky"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Blended"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane whisky zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Whisky nie znaleziona"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Częściowo aktualizuje dane whisky o podanym id",
+        "tags": [
+          "Whiskies"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Whisky"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Cask Strength"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane whisky zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Whisky nie znaleziona"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Usuwa whisky o podanym id",
+        "tags": [
+          "Whiskies"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Whisky została usunięta"
+          },
+          "404": {
+            "description": "Whisky nie znaleziona"
+          }
+        }
+      }
+    },
+    "/api/wines": {
+      "get": {
+        "summary": "Pobiera listę wszystkich win",
+        "tags": [
+          "Wines"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista win",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Wine Merlot"
+                      },
+                      "details": {
+                        "type": "object",
+                        "properties": {
+                          "awards": {
+                            "type": "object",
+                            "properties": {
+                              "international": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Gold Medal"
+                                }
+                              },
+                              "domestic": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "example": "Wine of the Year"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Tworzy nowe wino",
+        "tags": [
+          "Wines"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Wine"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Red"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Wino zostało utworzone"
+          },
+          "400": {
+            "description": "Niepoprawne dane wejściowe"
+          },
+          "409": {
+            "description": "Wino już istnieje"
+          }
+        }
+      }
+    },
+    "/api/wines/{id}": {
+      "get": {
+        "summary": "Pobiera szczegóły wina o podanym id",
+        "tags": [
+          "Wines"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Szczegóły wina"
+          },
+          "404": {
+            "description": "Wino nie znalezione"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aktualizuje dane wina o podanym id",
+        "tags": [
+          "Wines"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Wine"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "White"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane wina zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Wino nie znalezione"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Częściowo aktualizuje dane wina o podanym id",
+        "tags": [
+          "Wines"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Wine"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "Sparkling"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dane wina zostały zaktualizowane"
+          },
+          "404": {
+            "description": "Wino nie znalezione"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Usuwa wino o podanym id",
+        "tags": [
+          "Wines"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Wino zostało usunięte"
+          },
+          "404": {
+            "description": "Wino nie znalezione"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
